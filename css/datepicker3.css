@@ -785,8 +785,28 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   line-height: 1.428571429;
 }
 .datepicker.dropdown-menu th,
-.datepicker.datepicker-inline th,
-.datepicker.dropdown-menu td,
-.datepicker.datepicker-inline td {
-  padding: 0px 5px;
+.datepicker.dropdown-menu td {
+  padding: 4px 5px;
 }
+
+
+/* holiday, sunday, saturday */
+.datepicker table tr td.holiday,
+.datepicker table tr td.holiday:hover,
+.datepicker table tr td.holiday.disabled,
+.datepicker table tr td.holiday.disabled:hover {
+  color: #d62c1a;
+}
+.datepicker table tr td.saturday,
+.datepicker table tr td.saturday:hover,
+.datepicker table tr td.saturday.disabled,
+.datepicker table tr td.saturday.disabled:hover {
+  color: #3498db;
+}
+.datepicker table tr td.sunday,
+.datepicker table tr td.sunday:hover,
+.datepicker table tr td.sunday.disabled,
+.datepicker table tr td.sunday.disabled:hover {
+  color: #f39c12;
+}
+

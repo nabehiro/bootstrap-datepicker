@@ -63,7 +63,7 @@
 				this.push.apply(this, new_array);
 			},
 			clear: function(){
-				this.length = 0;
+				this.splice(0);
 			},
 			copy: function(){
 				var a = new DateArray();
@@ -87,6 +87,9 @@
 		this.dates = new DateArray();
 		this.viewDate = UTCToday();
 		this.focusDate = null;
+		this.holidayTimes = null;
+		if ($.fn.datepicker.holidays)
+		  this.holidayTimes = $.map($.fn.datepicker.holidays, function (val) { return val.getTime(); })
 
 		this._process_options(options);
 
@@ -731,6 +734,14 @@
 					cls.push('selected');
 				}
 			}
+
+		  // Holiday
+			if (this.holidayTimes && this.holidayTimes.indexOf(date.getTime()) >= 0) cls.push('holiday');
+		  // Sunday
+			if (date.getDay() === 0) cls.push('sunday');
+		  // Saturday
+			if (date.getDay() === 6) cls.push('saturday');
+
 			return cls;
 		},
 
@@ -1408,7 +1419,7 @@
 		startView: 0,
 		todayBtn: false,
 		todayHighlight: false,
-		weekStart: 0
+		weekStart: 0,
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [
 		'format',
